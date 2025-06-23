@@ -48,7 +48,7 @@ A responsive landing page for offering free website audits, built with HTML, Tai
 2. **Get your API key** from the Resend dashboard
 3. **Create a `.env` file** in the project root with:
    ```
-   RESEND_API_KEY=your_resend_api_key_here
+   RESEND_API_KEY=RESEND_API_KEY
    PORT=3000
    ```
 
