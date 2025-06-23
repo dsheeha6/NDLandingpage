@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Website Audit - Nomadic Designs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Supabase Client Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'nomadic-green': '#10B981',
+                        'nomadic-dark': '#111827',
+                        'nomadic-darker': '#0F172A'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+        }
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="gradient-bg text-white smooth-scroll">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-nomadic-darker/90 backdrop-blur-sm z-50 border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="https://nomadicdesigns.us" class="text-2xl font-bold text-nomadic-green hover:text-green-400 transition-colors duration-200">&lt;/Nomadic Designs&gt;</a>
+                </div>
+                <div class="hidden md:block">
+                    <a href="https://nomadicdesigns.us" class="text-gray-300 hover:text-nomadic-green transition-colors duration-200">
+                        Back to Main Site
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-nomadic-green to-white bg-clip-text text-transparent">
+                Get a Free Audit of Your Website
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                Find out what's holding your site back — and how to fix it.
+            </p>
+            <button onclick="scrollToForm()" class="bg-nomadic-green hover:bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-200 transform hover:scale-105 shadow-lg">
+                Get Your Free Audit
+            </button>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-nomadic-dark/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-lg bg-nomadic-darker/50 border border-gray-700">
+                    <div class="w-16 h-16 bg-nomadic-green rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Comprehensive Analysis</h3>
+                    <p class="text-gray-400">We'll analyze your website's performance, SEO, design, and user experience.</p>
+                </div>
+                <div class="text-center p-6 rounded-lg bg-nomadic-darker/50 border border-gray-700">
+                    <div class="w-16 h-16 bg-nomadic-green rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Actionable Insights</h3>
+                    <p class="text-gray-400">Get specific recommendations to improve your website's performance and conversions.</p>
+                </div>
+                <div class="text-center p-6 rounded-lg bg-nomadic-darker/50 border border-gray-700">
+                    <div class="w-16 h-16 bg-nomadic-green rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">24-Hour Turnaround</h3>
+                    <p class="text-gray-400">Receive your detailed audit report within 24 hours of qualification.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section id="audit-form" class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto">
+            <div class="bg-nomadic-darker/50 border border-gray-700 rounded-lg p-8">
+                <h2 class="text-3xl font-bold text-center mb-8">Request Your Free Website Audit</h2>
+                
+                <form id="auditForm" class="space-y-6">
+                    <div>
+                        <label for="fullName" class="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required 
+                               class="w-full px-4 py-3 bg-nomadic-dark border border-gray-600 rounded-lg focus:ring-2 focus:ring-nomadic-green focus:border-transparent text-white placeholder-gray-400">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address *</label>
+                        <input type="email" id="email" name="email" required 
+                               class="w-full px-4 py-3 bg-nomadic-dark border border-gray-600 rounded-lg focus:ring-2 focus:ring-nomadic-green focus:border-transparent text-white placeholder-gray-400">
+                    </div>
+                    
+                    <div>
+                        <label for="businessName" class="block text-sm font-medium text-gray-300 mb-2">Business Name *</label>
+                        <input type="text" id="businessName" name="businessName" required 
+                               class="w-full px-4 py-3 bg-nomadic-dark border border-gray-600 rounded-lg focus:ring-2 focus:ring-nomadic-green focus:border-transparent text-white placeholder-gray-400">
+                    </div>
+                    
+                    <div>
+                        <label for="industry" class="block text-sm font-medium text-gray-300 mb-2">Industry *</label>
+                        <select id="industry" name="industry" required 
+                                class="w-full px-4 py-3 bg-nomadic-dark border border-gray-600 rounded-lg focus:ring-2 focus:ring-nomadic-green focus:border-transparent text-white">
+                            <option value="">Select your industry</option>
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="saas">SaaS/Technology</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="finance">Finance</option>
+                            <option value="education">Education</option>
+                            <option value="real-estate">Real Estate</option>
+                            <option value="consulting">Consulting</option>
+                            <option value="restaurant">Restaurant/Food</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="websiteUrl" class="block text-sm font-medium text-gray-300 mb-2">Website URL *</label>
+                        <input type="url" id="websiteUrl" name="websiteUrl" required 
+                               placeholder="https://yourwebsite.com"
+                               class="w-full px-4 py-3 bg-nomadic-dark border border-gray-600 rounded-lg focus:ring-2 focus:ring-nomadic-green focus:border-transparent text-white placeholder-gray-400">
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full bg-nomadic-green hover:bg-green-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-200 transform hover:scale-105 shadow-lg">
+                        Submit for Free Audit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thank You Message (Hidden by default) -->
+    <div id="thankYouMessage" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-nomadic-darker border border-gray-700 rounded-lg p-8 max-w-md mx-4 text-center">
+            <div class="w-16 h-16 bg-nomadic-green rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-4">Thanks for submitting!</h3>
+            <p class="text-gray-300 mb-6">If you qualify, we'll email you a detailed audit within 24 hours.</p>
+            <button onclick="hideThankYouMessage()" class="bg-nomadic-green hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-200">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-nomadic-darker border-t border-gray-700 py-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="https://nomadicdesigns.us" class="text-xl font-bold text-nomadic-green hover:text-green-400 transition-colors duration-200">&lt;/Nomadic Designs&gt;</a>
+                </div>
+                <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+                    <a href="https://nomadicdesigns.us" class="text-gray-300 hover:text-nomadic-green transition-colors duration-200">
+                        Main Site
+                    </a>
+                    <a href="mailto:daniel.sheehan03@gmail.com" class="text-gray-300 hover:text-nomadic-green transition-colors duration-200">
+                        daniel.sheehan03@gmail.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
